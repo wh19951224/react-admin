@@ -8,6 +8,7 @@ import AllComponents from '../components';
 import routesConfig from './config';
 import queryString from 'query-string';
 
+
 export default class CRouter extends Component {
     requireAuth = (permission, component) => {
         const { auth } = this.props;
@@ -25,11 +26,44 @@ export default class CRouter extends Component {
         }
         return permission ? this.requireAuth(permission, component) : component;
     };
+    
+    // 扁平化 subsNav
+    flattenedSubs = (subs) => {
+        let res = []
+        function flattening(subs) {
+            subs.forEach(v => {
+                if(v.component) {
+                    res.push(v)
+                }
+                if(v.subs) {
+                    flattening(v.subs)
+                }
+            })
+            // map = 扁平化数组有误 ？ 面试问问
+            // return subs.map(v => {
+            //     // debugger
+            //     if(v.component) {
+            //         return v
+            //     }
+            //     if(v.hasOwnProperty('subs')) {
+            //         flattening(v.subs)
+            //     }
+            // })
+        }
+        flattening(subs)
+        
+        return res
+    }
+	
     render() {
+		console.log(routesConfig)
+		console.log(AllComponents)
         return (
             <Switch>
                 {Object.keys(routesConfig).map(key =>
                     routesConfig[key].map(r => {
+                        // console.log(r)
+                        // debugger
                         const route = r => {
                             const Component = AllComponents[r.component];
                             return (
@@ -67,7 +101,16 @@ export default class CRouter extends Component {
                                 />
                             );
                         };
-                        return r.component ? route(r) : r.subs.map(r => route(r));
+                        let s
+						if(r.component) {
+                            s = route(r)
+                        } else {
+                            let oneDimensionSubs = this.flattenedSubs(r.subs)
+                            // 路由更新 - 解决潜逃路由访问
+                            s = oneDimensionSubs.map(r => route(r))
+                        }
+						return s
+                        // return r.component ? route(r) : r.subs.map(r => route(r));
                     })
                 )}
 

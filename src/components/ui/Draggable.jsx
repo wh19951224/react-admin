@@ -44,7 +44,6 @@ class Drags extends React.Component {
                         <div className="gutter-box">
                             <Draggable zIndex={100} {...dragHandlers}>
                                 <Card bordered={false} className={'dragDemo'}>
-
                                     I can be dragged anywhere
                                 </Card>
                             </Draggable>
