@@ -7,7 +7,10 @@ import DocumentTitle from 'react-document-title';
 import AllComponents from '../components';
 import routesConfig, { IFMenuBase, IFMenu } from './config';
 // import queryString from 'query-string';
+// import queryString = require('query-string'); 
+// error
 // import queryString from '../utils/queryString';
+
 
 type CRouterProps = {
     auth: any;
@@ -46,6 +49,7 @@ export default class CRouter extends Component<CRouterProps> {
                                         const reg = /\?\S*/g;
                                         // 匹配?及其以后字符串
                                         const queryParams = window.location.hash.match(reg);
+                                        // console.log(queryParams)
                                         // 去除?的参数
                                         const { params } = props.match;
                                         Object.keys(params).forEach(key => {
@@ -57,7 +61,7 @@ export default class CRouter extends Component<CRouterProps> {
                                         const merge = {
                                             ...props,
                                             query: queryParams
-                                                ? queryParams[0]
+                                                ? JSON.parse(queryParams[0])
                                                 : {},
                                         };
                                         // 重新包装组件
