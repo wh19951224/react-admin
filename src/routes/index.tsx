@@ -68,8 +68,7 @@ export default class CRouter extends Component<CRouterProps> {
                                         const wrappedComponent = (
                                             <DocumentTitle title={r.title}>
                                                 <Component {...merge} />
-                                            </DocumentTitle>
-                                        );
+                                            </DocumentTitle>);
                                         return r.login
                                             ? wrappedComponent
                                             : this.requireLogin(wrappedComponent, r.auth);
