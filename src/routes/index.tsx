@@ -6,7 +6,8 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
 import AllComponents from '../components';
 import routesConfig, { IFMenuBase, IFMenu } from './config';
-import queryString from 'query-string';
+// import queryString from 'query-string';
+// import queryString from '../utils/queryString';
 
 type CRouterProps = {
     auth: any;
@@ -52,10 +53,11 @@ export default class CRouter extends Component<CRouterProps> {
                                                 params[key] && params[key].replace(reg, '');
                                         });
                                         props.match.params = { ...params };
+                                        // queryString.parse(queryParams[0])
                                         const merge = {
                                             ...props,
                                             query: queryParams
-                                                ? queryString.parse(queryParams[0])
+                                                ? queryParams[0]
                                                 : {},
                                         };
                                         // 重新包装组件
