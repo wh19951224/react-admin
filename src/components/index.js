@@ -28,6 +28,8 @@ import Cssmodule from './cssmodule';
 import MapUi from './ui/map';
 import QueryParams from './extension/QueryParams';
 
+import Drop from './drop/Drop'
+
 const WysiwygBundle = Loadable({
     // 按需加载富文本配置
     loader: () => import('./ui/Wysiwyg'),
@@ -59,4 +61,5 @@ export default {
     Cssmodule,
     MapUi,
     QueryParams,
+    Drop
 };

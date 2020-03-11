@@ -12,10 +12,11 @@ export default {
                 // { key: '/app/ui/spins', title: '加载中', component: 'Spins' },
                 // { key: '/app/ui/modals', title: '对话框', component: 'Modals' },
                 // { key: '/app/ui/notifications', title: '通知提醒框', component: 'Notifications' },
-                // { key: '/app/ui/tabs', title: '标签页', component: 'Tabs' },
+                { key: '/app/ui/tabs', title: '标签页', component: 'Tabs' },
                 // { key: '/app/ui/banners', title: '轮播图', component: 'Banners' },
                 { key: '/app/ui/wysiwyg', title: '富文本', component: 'WysiwygBundle' },
                 { key: '/app/ui/drags', title: '拖拽', component: 'Drags' },
+                { key: '/app/ui/drop', title: '下拉', component: 'Drop' },
                 // { key: '/app/ui/gallery', title: '画廊', component: 'Gallery' },
                 // { key: '/app/ui/map', title: '地图', component: 'MapUi' },
                 { 
